@@ -83,7 +83,9 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm8960
+    camera.msm8960 \
+    libboringssl-compat \
+    libshim_qcopt
 
 # CRDA
 PRODUCT_PACKAGES += \
@@ -104,6 +106,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libjni_motoSensor \
     MotoDoze
+
+# Filesystem
+PRODUCT_PACKAGES += \
+    e2fsck \
+    fibmap.f2fs \
+    fsck.f2fs \
+    make_ext4fs \
+    mkfs.f2fs \
+    resize2fs
 
 # IRSC
 PRODUCT_COPY_FILES += \
@@ -142,21 +153,22 @@ endif
 
 # OMX
 PRODUCT_PACKAGES += \
+    libdashplayer \
     libOmxVdec \
     libOmxVenc \
     libOmxAacEnc \
     libOmxAmrEnc \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
-    libstagefrighthw
+    libstagefrighthw \
+    qcmediaplayer
+
+PRODUCT_BOOT_JARS += \
+    qcmediaplayer
 
 # Power HAL
 PRODUCT_PACKAGES += \
     power.msm8960
-
-# Qualcomm
-PRODUCT_PACKAGES += \
-    libshim_qcopt
 
 # Ramdisk
 PRODUCT_PACKAGES += \
@@ -176,10 +188,21 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     ueventd.qcom.rc
 
+# Shim libraries
+PRODUCT_PACKAGES += \
+     libshim_camera \
+     libshim_log \
+     libshim_mdmcutback \
+     libshim_ril \
+
 # Support
 PRODUCT_PACKAGES += \
     libcurl \
     libxml2
+
+# USB
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
 
 # Wifi
 PRODUCT_PACKAGES += \

@@ -1,0 +1,13 @@
+# Camera
+/dev/motcamera0                     u:object_r:camera_device:s0
+
+# JPEG engine
+/dev/gemini.*                       u:object_r:camera_device:s0
+
+# Ramdump
+/dev/coredump_modem                 u:object_r:ramdump_device:s0
+
+# Sensors
+/dev/msp430                         u:object_r:sensors_device:s0
+/dev/msp430_as                      u:object_r:sensors_device:s0
+/dev/msp430_ms                      u:object_r:sensors_device:s0

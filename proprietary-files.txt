@@ -128,7 +128,6 @@ vendor/lib/libWVStreamControlAPI_L1.so
 # GPS
 -app/com.qualcomm.location/com.qualcomm.location.apk
 -app/com.qualcomm.services.location/com.qualcomm.services.location.apk
--app/MotGeoFenceSvc/MotGeoFenceSvc.apk
 etc/permissions/com.qualcomm.location.xml
 etc/gps.conf
 etc/izat.conf
@@ -188,9 +187,11 @@ vendor/lib/lib-rtpsl.so
 
 # Media
 lib/libDivxDrm.so
+lib/libExtendedExtractor.so
 lib/libI420colorconvert.so
 lib/libmm-color-convertor.so
 lib/libmmosal.so
+lib/libmmparser.so
 lib/libOmxAacDec.so
 lib/libOmxAmrwbplusDec.so
 lib/libOmxEvrcDec.so

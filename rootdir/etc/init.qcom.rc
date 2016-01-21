@@ -25,9 +25,8 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import init.qcom.power.rc
-import init.target.rc
 import init.qcom.usb.rc
+import init.target.rc
 
 on early-init
     # Create firmware mount point
@@ -43,11 +42,18 @@ on early-init
     mkdir /persist 0771 system system
 
     # Symbols required for motorola blobs
-    export LD_SHIM_LIBS "/system/lib/libqc-opt.so|libshim_qcopt.so"
+    export LD_SHIM_LIBS /system/lib/libqc-opt.so|libshim_qcopt.so:/system/lib/hw/camera.vendor.msm8960.so|libshim_camera.so:/system/lib/liblog.so|libshim_log.so:/system/lib/libmdmcutback.so|libshim_mdmcutback.so:/system/bin/rild|libshim_ril.so:/system/lib/libril.so|libshim_ril.so:/system/lib/libmot_sensorlistener.so|libshim_camera.so:/system/lib/libcrypto.so|libboringssl-compat.so
+
+    # Support legacy libs
+    symlink /system/vendor/lib/egl /egl
 
     symlink /data/tombstones /tombstones
 
 on init
+    # External storage directories
+    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
+    mkdir /storage/usbdisk 0700 root root
+
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
@@ -78,6 +84,10 @@ on fs
     restorecon_recursive /persist
 
 on post-fs-data
+    # we will remap this as /mnt/sdcard with the sdcard fuse tool
+    mkdir /data/media 0770 media_rw media_rw
+    chown media_rw media_rw /data/media
+
     # Create the directory used by CnE subsystem
     mkdir /data/connectivity 0771 system system
     chown system system /data/connectivity
@@ -695,4 +705,3 @@ on start-charging
     # Prepare for charger mode
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu1/online 0
-
