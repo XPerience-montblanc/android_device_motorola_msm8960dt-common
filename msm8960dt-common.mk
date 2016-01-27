@@ -81,6 +81,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
 
+# ANT+
+PRODUCT_PACKAGES += \
+    AntHalService \
+    com.dsi.ant.antradio_library \
+    libantradio
+
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8960 \
@@ -106,15 +112,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libjni_motoSensor \
     MotoDoze
-
-# Filesystem
-PRODUCT_PACKAGES += \
-    e2fsck \
-    fibmap.f2fs \
-    fsck.f2fs \
-    make_ext4fs \
-    mkfs.f2fs \
-    resize2fs
 
 # IRSC
 PRODUCT_COPY_FILES += \
