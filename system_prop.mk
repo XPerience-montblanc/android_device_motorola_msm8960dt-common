@@ -115,3 +115,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # WLAN
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
+
+#ROGMSCORE
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.com.google.clientidbase.yt=android-motorola \
+    ro.com.google.clientidbase=android-motorola \
+
+#property to check if dynamic resolution change is  supported in framework
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.streaming.video.drs=true \
+
