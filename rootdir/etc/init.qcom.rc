@@ -527,7 +527,6 @@ service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh
 service mpdecision /system/bin/mpdecision --avg_comp
     user root
     group root system
-    socket mpdecision stream 0660 root system
     disabled
 
 service msp430 /system/bin/msp430 boot
