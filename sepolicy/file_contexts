@@ -11,3 +11,8 @@
 /dev/msp430                         u:object_r:sensors_device:s0
 /dev/msp430_as                      u:object_r:sensors_device:s0
 /dev/msp430_ms                      u:object_r:sensors_device:s0
+
+#Blocks
+/dev/block/platform/msm_sdcc\.1/by-name/persist				u:object_r:persist_block_device:s0
+/dev/block/platform/msm_sdcc\.1/by-name/userdata u:object_r:userdata_block_device:s0
+/dev/block/platform/msm_sdcc\.1/by-name/cache u:object_r:cache_block_device:s0

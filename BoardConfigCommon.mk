@@ -97,11 +97,6 @@ TARGET_POWERHAL_VARIANT := qcom
 # Qualcomm support
 BOARD_USES_QCOM_HARDWARE := true
 
-# Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
-
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
 
@@ -127,3 +122,26 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
 WIFI_DRIVER_MODULE_NAME := "wlan"
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
+
+# TWRP
+#DEVICE_RESOLUTION := 720x1280
+#TW_INTERNAL_STORAGE_PATH := "/data/media"
+#TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+#RECOVERY_GRAPHICS_USE_LINELENGTH := true
+#TW_INCLUDE_CRYPTO := true
+#TW_BRIGHTNESS_PATH := /sys/class/backlight/lcd-backlight/brightness
+#TW_MAX_BRIGHTNESS := 126
+#TW_NEVER_UNMOUNT_SYSTEM := true
+#TW_ALWAYS_RMRF := true
+#TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
+
+# Recovery
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/twrp.fstab
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
+
+BOARD_RECOVERY_SWIPE := true
+DEVICE_RESOLUTION := 720x1280
+TW_BRIGHTNESS_PATH := /sys/class/backlight/lcd-backlight/brightness
+TW_MAX_BRIGHTNESS := 126

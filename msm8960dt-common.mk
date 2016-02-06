@@ -93,6 +93,10 @@ PRODUCT_PACKAGES += \
     libboringssl-compat \
     libshim_qcopt
 
+# Stlport
+PRODUCT_PACKAGES += \
+    libstlport
+
 # CRDA
 PRODUCT_PACKAGES += \
     crda \
