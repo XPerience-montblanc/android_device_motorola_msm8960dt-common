@@ -99,7 +99,7 @@ TARGET_POWERHAL_VARIANT := qcom
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/twrp.fstab
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
@@ -133,3 +133,10 @@ ifeq ($(HOST_OS),linux)
     endif
   endif
 endif
+
+BOARD_CUSTOM_BOOTIMG_MK := device/motorola/msm8960dt-common/custombootimg.mk
+TW_EXTERNAL_STORAGE_PATH := "/usb-otg"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "usb-otg"
+
+DEVICE_RESOLUTION := 720x1280
+TW_ALWAYS_RMRF := true
