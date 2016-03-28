@@ -51,7 +51,7 @@ BOARD_KERNEL_SEPARATED_DT	   := true
 BOARD_MKBOOTIMG_ARGS 		   := --ramdisk_offset 0x02200000
 TARGET_KERNEL_SOURCE 		   := kernel/motorola/ghost
 TARGET_KERNEL_CONFIG 		   := msm8960dt_mmi_defconfig
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
+#TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-smd"
@@ -99,14 +99,18 @@ TARGET_POWERHAL_VARIANT := qcom
 BOARD_USES_QCOM_HARDWARE := true
 
 # Recovery
-TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/twrp.fstab
+#TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-DEVICE_RESOLUTION := 720x1280
-TW_ALWAYS_RMRF := true
+
+#TWRP
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/twrp.fstab
+TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
 # Enable workaround for slow rom flash
 COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
+TW_EXTERNAL_STORAGE_PATH := "/usb-otg"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "usb-otg"
+DEVICE_RESOLUTION := 720x1280
 
 # RIL
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril/
@@ -129,3 +133,12 @@ WIFI_DRIVER_MODULE_NAME		 := "wlan"
 WIFI_DRIVER_MODULE_PATH 	 := "/system/lib/modules/wlan.ko"
 WPA_SUPPLICANT_VERSION 		 := VER_0_8_X
 
+# Basic dexpreopt
+ifeq ($(HOST_OS),linux)
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    ifeq ($(WITH_DEXPREOPT),)
+      WITH_DEXPREOPT := true
+      WITH_DEXPREOPT_BOOT_IMG_ONLY := true
+    endif
+  endif
+endif
