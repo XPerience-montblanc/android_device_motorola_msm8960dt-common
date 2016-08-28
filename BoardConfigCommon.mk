@@ -40,8 +40,8 @@ TARGET_CPU_VARIANT		    := krait
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 #Custom flags
-TARGET_GLOBAL_CFLAGS 		+= -mfpu=neon-vfpv4 -mfloat-abi=hard
-TARGET_GLOBAL_CPPFLAGS 		+= -mfpu=neon-vfpv4 -mfloat-abi=hard
+#TARGET_GLOBAL_CFLAGS 		+= -mfpu=neon-vfpv4 -mfloat-abi=hard
+#TARGET_GLOBAL_CPPFLAGS 		+= -mfpu=neon-vfpv4 -mfloat-abi=hard
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK 	   := $(LOCAL_PATH)/mkbootimg.mk
@@ -77,6 +77,7 @@ BLUETOOTH_HCI_USE_MCT 	  := true
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
+TARGET_NEEDS_TEXT_RELOCATIONS := true
 
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(PLATFORM_PATH)/include
@@ -101,6 +102,8 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
+TARGET_RECOVERY_DENSITY := xhdpi
+TARGET_NOT_USE_GZIP_RECOVERY_RAMDISK := true
 
 # Properties
 TARGET_SYSTEM_PROP += device/motorola/msm8960dt-common/system.prop
@@ -109,9 +112,9 @@ TARGET_SYSTEM_PROP += device/motorola/msm8960dt-common/system.prop
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril/
 
 # SELinux
--include device/qcom/sepolicy/sepolicy.mk
+#-include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += \
+#BOARD_SEPOLICY_DIRS += \
     $(LOCAL_PATH)/sepolicy
 
 # Wifi
