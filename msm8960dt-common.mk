@@ -74,11 +74,11 @@ PRODUCT_PACKAGES += \
     wcd9310_anc.bin
 
 # ANT+
-PRODUCT_PACKAGES += \
-    AntHalService \
-    com.dsi.ant.antradio_library \
-    libantradio \
-    antradio_app
+#PRODUCT_PACKAGES += \
+#    AntHalService \
+#    com.dsi.ant.antradio_library \
+#    libantradio \
+#    antradio_app
 
 # Audio configuration
 PRODUCT_COPY_FILES += \

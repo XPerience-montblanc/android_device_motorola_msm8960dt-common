@@ -40,8 +40,8 @@ TARGET_CPU_VARIANT		    := krait
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 #Custom flags
-#TARGET_GLOBAL_CFLAGS 		+= -mfpu=neon-vfpv4 -mfloat-abi=hard
-#TARGET_GLOBAL_CPPFLAGS 		+= -mfpu=neon-vfpv4 -mfloat-abi=hard
+TARGET_GLOBAL_CFLAGS 		+= -mfpu=neon-vfpv4 -mfloat-abi=hard
+TARGET_GLOBAL_CPPFLAGS 		+= -mfpu=neon-vfpv4 -mfloat-abi=hard
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK 	   := $(LOCAL_PATH)/mkbootimg.mk
@@ -55,7 +55,7 @@ TARGET_KERNEL_CONFIG 		   := msm8960dt_mmi_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
 
 # ANT+
-BOARD_ANT_WIRELESS_DEVICE := "qualcomm-smd"
+#BOARD_ANT_WIRELESS_DEVICE := "qualcomm-smd"
 
 WLAN_MODULES:
 	mkdir -p $(KERNEL_MODULES_OUT)/prima
@@ -65,10 +65,11 @@ WLAN_MODULES:
 TARGET_KERNEL_MODULES += WLAN_MODULES
 
 # Audio
-BOARD_USES_ALSA_AUDIO 		    	:= true
-BOARD_USES_LEGACY_ALSA_AUDIO 	    := true
-AUDIO_USE_LL_AS_PRIMARY_OUTPUT 		:= true
-USE_CUSTOM_AUDIO_POLICY				:= 1
+#BOARD_USES_ALSA_AUDIO 		    := true
+#BOARD_USES_LEGACY_ALSA_AUDIO 	    := true
+#AUDIO_USE_LL_AS_PRIMARY_OUTPUT 	    := true
+#USE_CUSTOM_AUDIO_POLICY		    := 1
+USE_LEGACY_AUDIO_POLICY := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH 	  := true
